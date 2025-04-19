@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Environment
+.env
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+
+# Static
+/static/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Build
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Redis / Celery
+celerybeat-schedule
+*.pid
+
+# Poetry
+poetry.lock
+
+# Database
+*.db

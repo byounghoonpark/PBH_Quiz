@@ -1,0 +1,24 @@
+[project]
+name = "pbh-quiz"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "bhpark",email = "88michael@naver.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=5.2,<6.0)",
+    "djangorestframework (>=3.16.0,<4.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "drf-yasg (>=1.21.10,<2.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "djangorestframework-simplejwt (>=5.5.0,<6.0.0)",
+    "drf-extensions (>=0.8.0,<0.9.0)",
+    "redis (>=5.2.1,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
