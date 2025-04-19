@@ -1,10 +1,6 @@
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, permissions
-from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
-from django.db import models
-from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
 from .models import Quiz
 from .serializers import QuizSerializer, QuizListSerializer
 
@@ -54,44 +50,3 @@ class QuizAdminViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
 
-
-# class QuizListView(ListAPIView):
-#     permission_classes = [IsAuthenticated]
-#     serializer_class = QuizSerializer
-#     pagination_class = Pagination
-#
-#     @swagger_auto_schema(operation_summary="사용자 퀴즈 목록 조회")
-#     def get(self, request, *args, **kwargs):
-#         return super().get(request, *args, **kwargs)
-#
-#     def get_queryset(self):
-#         user: User = self.request.user
-#         profile = getattr(user, 'profile', None)
-#         if not profile:
-#             return Quiz.objects.none()
-#
-#         return Quiz.objects.filter(
-#             models.Q(grade__isnull=True) |
-#             (models.Q(grade=profile.grade) & (
-#                 models.Q(classroom__isnull=True) | models.Q(classroom=profile.classroom)
-#             ))
-#         ).order_by('-created_at')
-#
-#
-# class QuizDetailView(RetrieveAPIView):
-#     serializer_class = QuizSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-#
-#     @swagger_auto_schema(operation_summary="퀴즈 상세 조회")
-#     def get(self, request, *args, **kwargs):
-#         return super().get(request, *args, **kwargs)
-#
-#     def get_queryset(self):
-#         user = self.request.user
-#         profile = user.profile
-#         return Quiz.objects.filter(
-#             models.Q(grade__isnull=True) |
-#             (models.Q(grade=profile.grade) & (
-#                 models.Q(classroom__isnull=True) | models.Q(classroom=profile.classroom)
-#             ))
-#         )
